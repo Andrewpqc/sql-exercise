@@ -1,0 +1,15 @@
+INSERT INTO <表名>（[属性列1][,属性列2]...）VALUES (<常量1>,<常量2>...);
+
+INSERT INTO STUDENTS (SNO,SNAME,SSEX,SDEPT,SAGE) ）VALUES ("2016211129","陈东","男","IS",18);
+
+-- 未指定属性列，这表明新元组要在要在表的所有属性列上都指定值，属性列的次序与CREATE TABLE中的次序一致
+INSERT INTO STUDENTS VALUES ("2016211119","小明","男",19,"CS");
+
+-- 插入子查询结果
+-- 1.先创建表
+CREATE TABLE DEPT_AGE(
+    SDEPT CHAR(15),
+    AVG_AGE SMALLINT
+);
+-- ２．插入子查询的结果
+INSERT INTO DEPT_AGE (SDEPT,AVG_AGE) SELECT SDEPT,AVG(SAGE) FROM STUDENTS GROUP BY SDEPT;
